@@ -7,10 +7,10 @@ const (
 )
 
 type Response struct {
-	Status  string  `json:"status" yaml:"status"`
-	Data    any     `json:"data,omitempty" yaml:"data,omitempty"`
-	Message *string `json:"message,omitempty" yaml:"message,omitempty"`
-	Code    *string `json:"code,omitempty" yaml:"code,omitempty"`
+	Status  string `json:"status" yaml:"status"`
+	Data    any    `json:"data,omitempty" yaml:"data,omitempty"`
+	Message string `json:"message,omitempty" yaml:"message,omitempty"`
+	Code    string `json:"code,omitempty" yaml:"code,omitempty"`
 }
 
 func Success(data any) *Response {
@@ -30,15 +30,15 @@ func Fail(data any) *Response {
 func Error(message string, data any, code string) *Response {
 	return &Response{
 		Status:  StatusError,
-		Message: &message,
+		Message: message,
 		Data:    data,
-		Code:    &code,
+		Code:    code,
 	}
 }
 
 func SimpleErr(message string) *Response {
 	return &Response{
 		Status:  StatusError,
-		Message: &message,
+		Message: message,
 	}
 }
